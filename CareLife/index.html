@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Kits de autonomía, instalación segura y herramientas premium para cuidar con más calma.">
+    <title>CareLife | Autonomía Premium para el Hogar</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --brand-primary: #0f172a; 
+            --brand-secondary: #0f766e; 
+            --brand-accent: #d97706; 
+            --brand-mint: #059669; 
+            --bg-light: #f8fafc; 
+            --bg-glass: rgba(255, 255, 255, 0.9);
+            --text-dark: #1e293b;
+            --text-muted: #475569;
+            --line: #cbd5e1;
+            --shadow-soft: 0 4px 20px rgba(15, 23, 42, 0.04);
+            --shadow-hover: 0 20px 40px rgba(15, 23, 42, 0.08);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button, input, textarea, select { font: inherit; outline: none; }
+        button { cursor: pointer; transition: var(--transition); }
+        .shell { width: min(1200px, calc(100% - 40px)); margin: auto; }
+
+        /* NAVBAR */
+        .site-header { position: sticky; top: 0; z-index: 50; background: var(--bg-glass); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+        .nav { height: 75px; display: flex; align-items: center; justify-content: space-between; }
+        .brand { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.04em; color: var(--brand-primary); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-size: 0.95rem; font-weight: 600; color: var(--text-muted); text-decoration: none; transition: var(--transition); }
+        .nav-links a:hover { color: var(--brand-primary); }
+        .cart-button { background: var(--bg-light); color: var(--brand-primary); border: 1px solid var(--line); border-radius: 50px; padding: 10px 24px; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; }
+        .cart-button:hover { background: var(--brand-primary); color: #fff; border-color: var(--brand-primary); }
+        .count { background: var(--brand-secondary); color: #fff; min-width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50px; font-size: 0.75rem; font-weight: 700; }
+
+        /* HERO SECTION */
+        .hero { padding: 70px 0 90px; background: linear-gradient(180deg, #f1f5f9 0%, #ffffff 100%); }
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+        .eyebrow { display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.75rem; font-weight: 700; color: var(--brand-secondary); margin-bottom: 20px; }
+        .hero h1 { font-size: clamp(2.8rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.04em; font-weight: 800; color: var(--brand-primary); margin-bottom: 20px; }
+        .hero h1 em { font-style: normal; color: var(--brand-secondary); }
+        .lead { font-size: 1.15rem; color: var(--text-muted); max-width: 500px; margin-bottom: 35px; }
+        
+        /* BOTONES */
+        .button { border: 0; border-radius: 12px; padding: 15px 25px; font-weight: 600; font-size: 1rem; text-decoration: none; display: inline-flex; justify-content: center; align-items: center; gap: 10px; }
+        .button.primary { background: var(--brand-primary); color: #fff; }
+        .button.primary:hover { background: #334155; transform: translateY(-2px);}
+        .button.outline { background: transparent; border: 2px solid var(--brand-primary); color: var(--brand-primary); }
+        .button.outline:hover { background: var(--brand-primary); color: #fff; transform: translateY(-2px);}
+
+        .hero-art img { width: 100%; height: 480px; object-fit: cover; border-radius: 24px; box-shadow: var(--shadow-soft); }
+
+        /* ASISTENTE */
+        .section { padding: 90px 0; }
+        .section-head { text-align: center; max-width: 650px; margin: 0 auto 50px; }
+        .section-head h2 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--brand-primary); margin-bottom: 15px;}
+        .section-head p { color: var(--text-muted); font-size: 1.1rem; }
+        .need-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 15px; }
+        .need { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px; text-align: center; transition: var(--transition); }
+        .need:hover, .need.active { border-color: var(--brand-secondary); box-shadow: var(--shadow-soft); transform: translateY(-3px); }
+        .need-icon { width: 45px; height: 45px; border-radius: 12px; background: #f1f5f9; color: var(--brand-secondary); font-size: 1.3rem; display: grid; place-items: center; margin: 0 auto 15px; }
+        .need strong { display: block; font-size: 1rem; font-weight: 700; color: var(--brand-primary); }
+
+        /* CATÁLOGO */
+        .catalog-tools { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 20px; }
+        .filters { display: flex; gap: 10px; flex-wrap: wrap; }
+        .filter { background: #fff; border: 1px solid var(--line); border-radius: 50px; padding: 8px 18px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; }
+        .filter.active, .filter:hover { background: var(--brand-primary); color: #fff; border-color: var(--brand-primary); }
+        .catalog { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .product { background: #fff; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: var(--transition); }
+        .product:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: #94a3b8; }
+        .product-img { position: relative; height: 220px; overflow: hidden; border-bottom: 1px solid var(--line);}
+        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .product:hover img { transform: scale(1.03); }
+        .tag { position: absolute; top: 15px; left: 15px; background: #fff; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; color: var(--brand-secondary); box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
+        .product-body { padding: 25px; display: flex; flex-direction: column; flex: 1; }
+        .product h3 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; color: var(--brand-primary); margin-bottom: 8px; }
+        .product p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; flex: 1; }
+        .price-zone { background: var(--bg-light); padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
+        .price { font-size: 1.5rem; font-weight: 800; color: var(--brand-primary); }
+        .install { color: var(--brand-secondary); font-size: 0.8rem; font-weight: 600; margin-top: 5px; }
+        .product-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .detail-button { border: 1px solid var(--line); border-radius: 10px; background: #fff; font-weight: 600; color: var(--text-dark); padding: 10px; font-size: 0.9rem;}
+        .detail-button:hover { border-color: var(--brand-primary); background: var(--bg-light);}
+        .add-button { background: var(--brand-primary); color: #fff; border: 0; border-radius: 10px; font-weight: 600; padding: 10px; font-size: 0.9rem;}
+        .add-button:hover { background: #334155; }
+
+        /* TESTIMONIOS */
+        .testimonials { padding: 80px 0; background: var(--bg-light); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 60px;}
+        .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;}
+        .testi-card { background: #fff; padding: 30px; border-radius: 20px; box-shadow: var(--shadow-soft); position: relative; }
+        .testi-card::before { content: '\201C'; position: absolute; top: 10px; right: 20px; font-family: 'Playfair Display', serif; font-size: 5rem; color: #f1f5f9; line-height: 1; z-index: 0; }
+        .testi-card p { position: relative; z-index: 1; font-style: italic; color: var(--text-muted); font-size: 1rem; margin-bottom: 20px; }
+        .testi-author { display: flex; align-items: center; gap: 15px; }
+        .testi-avatar { width: 50px; height: 50px; border-radius: 50%; background: var(--brand-secondary); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 1.2rem; }
+        .testi-info strong { display: block; color: var(--brand-primary); font-size: 0.95rem; }
+        .testi-info span { color: var(--brand-secondary); font-size: 0.8rem; font-weight: 600; }
+        .stars { color: #fbbf24; font-size: 0.9rem; margin-bottom: 10px; }
+
+        /* CIERRE PREMIUM */
+        .science-section { background: #203b82; color: white; padding: 90px 20px; text-align: center; }
+        .science-section h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.02em; }
+        .science-section p.lead-text { font-size: 1.1rem; max-width: 800px; margin: 0 auto 50px auto; color: #e2e8f0; line-height: 1.7; }
+        .science-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 950px; margin: 0 auto; }
+        .science-card { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 20px; padding: 40px 30px; transition: var(--transition); }
+        .science-card:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-5px); }
+        .science-card i { font-size: 2.8rem; color: #38bdf8; margin-bottom: 20px; }
+        .science-card h3 { font-size: 1.3rem; margin-bottom: 15px; font-weight: 700; }
+        .science-card p { font-size: 0.95rem; color: #cbd5e1; }
+
+        /* FOOTER */
+        .site-footer { background: #0f172a; color: #f8fafc; padding: 70px 20px; text-align: center; }
+        .site-footer h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 15px; }
+        .site-footer p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 30px; }
+        .footer-contact { display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); padding: 14px 28px; border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; transition: var(--transition); }
+        .footer-contact:hover { background: #25d366; color: #fff; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);}
+
+        /* MODALES Y CARRITO */
+        .overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(3px); z-index: 80; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .overlay.open { opacity: 1; visibility: visible; }
+        .drawer { position: fixed; top: 0; right: 0; z-index: 90; height: 100%; width: min(420px, 100%); background: #fff; transform: translateX(100%); transition: transform 0.3s ease; display: flex; flex-direction: column; box-shadow: -5px 0 30px rgba(0,0,0,0.1); }
+        .drawer.open { transform: translateX(0); }
+        .drawer-head { padding: 25px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+        .drawer-head h2 { font-size: 1.4rem; font-weight: 800; color: var(--brand-primary); }
+        .icon-button { background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.1rem; display: grid; place-items: center; color: var(--text-dark);}
+        .icon-button:hover { background: #e2e8f0; }
+        .cart-lines { padding: 25px; flex: 1; overflow-y: auto; }
+        .empty { text-align: center; color: var(--text-muted); font-size: 0.95rem; padding: 40px 20px; background: var(--bg-light); border-radius: 12px; }
+        .line-item { display: grid; grid-template-columns: 1fr auto; gap: 15px; padding: 15px 0; border-bottom: 1px solid var(--line); align-items: center;}
+        .remove { background: #fef2f2; color: #ef4444; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+        .cart-foot { padding: 25px; border-top: 1px solid var(--line); background: #f8fafc; }
+        .total { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 800; color: var(--brand-primary); margin-bottom: 20px; }
+        
+        dialog { margin: auto; border: 0; border-radius: 20px; width: min(700px, 90%); box-shadow: 0 20px 50px rgba(0,0,0,0.15); padding: 0; }
+        dialog::backdrop { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); }
+        
+        #confirm-dialog { width: min(400px, 90%); padding: 30px; text-align: center; }
+        #confirm-dialog h3 { font-size: 1.4rem; font-weight: 800; color: var(--brand-primary); margin-bottom: 10px; }
+        #confirm-dialog p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; }
+        .confirm-actions { display: flex; gap: 10px; justify-content: center; }
+        .btn-cancel { background: #f1f5f9; color: var(--text-dark); border: none; border-radius: 10px; padding: 10px 20px; font-weight: 600; flex: 1;}
+        .btn-cancel:hover { background: #e2e8f0; }
+        .btn-confirm { background: var(--brand-primary); color: #fff; border: none; border-radius: 10px; padding: 10px 20px; font-weight: 600; flex: 1;}
+        .btn-confirm:hover { background: #334155; }
+
+        /* TOAST NOTIFICACIONES */
+        #toast-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+        .toast { background: #fff; border-left: 4px solid var(--brand-mint); box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 15px 20px; border-radius: 8px; display: flex; align-items: center; gap: 12px; transform: translateX(120%); opacity: 0; transition: var(--transition); }
+        .toast.show { transform: translateX(0); opacity: 1; }
+
+        /* SCROLL REVEAL (Infinito) */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.6s ease-out; }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        @media(max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="shell nav">
+            <a class="brand" href="#inicio"><i class="fa-solid fa-house-medical-circle-check" style="color:var(--brand-secondary)"></i> CareLife</a>
+            <nav class="nav-links">
+                <a href="#necesidades">Asistente Médico</a>
+                <a href="#kits">Catálogo</a>
+                <a href="#confianza">Testimonios</a>
+            </nav>
+            <button class="cart-button" id="open-cart">
+                <i class="fa-solid fa-bag-shopping"></i> Mi Carrito 
+                <span class="count" id="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="shell hero-grid">
+                <div class="reveal">
+                    <div class="eyebrow"><i class="fa-solid fa-shield-halved"></i> Autonomía Segura en Casa</div>
+                    <h1>Tu hogar. <em>Tus reglas.</em></h1>
+                    <p class="lead">Kits de autonomía diseñados con pulcritud técnica: productos validados, instalación segura y herramientas de gestión clínica familiar.</p>
+                    <a class="button primary" href="#necesidades">Encontrar mi kit ideal</a>
+                </div>
+                <div class="hero-art reveal">
+                    <img src="https://images.unsplash.com/photo-1576765608866-5b51046452be?auto=format&fit=crop&w=1200&q=88" alt="Persona mayor en casa">
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-light" id="necesidades" style="background-color: var(--bg-light);">
+            <div class="shell">
+                <div class="section-head reveal">
+                    <h2>¿Qué momento requiere apoyo?</h2>
+                    <p>Filtrá el catálogo según la rutina clínica o doméstica que necesites resolver hoy.</p>
+                </div>
+                <div class="need-grid reveal" id="need-grid"></div>
+            </div>
+        </section>
+
+        <section class="section" id="kits">
+            <div class="shell">
+                <div class="catalog-tools reveal">
+                    <div class="filters" id="filters"></div>
+                    <span style="font-weight: 600; color: var(--text-muted); font-size: 0.9rem;" id="result-count"></span>
+                </div>
+                <div class="catalog" id="catalog"></div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="confianza">
+            <div class="shell">
+                <div class="section-head reveal" style="margin-bottom: 20px;">
+                    <div class="eyebrow" style="justify-content: center;"><i class="fa-solid fa-heart-pulse"></i> Validado por familias y expertos</div>
+                    <h2>Voces de Confianza</h2>
+                </div>
+                
+                <div class="testi-grid" id="testi-grid">
+                    <div class="testi-card reveal">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p>"Compramos el Kit Paso Firme para mi mamá. La instalación fue súper limpia y saber que las luces se encienden solas de noche nos devolvió la tranquilidad para dormir."</p>
+                        <div class="testi-author">
+                            <div class="testi-avatar" style="background:#0284c7;">M</div>
+                            <div class="testi-info"><strong>Mariana G.</strong><span>Familiar a cargo</span></div>
+                        </div>
+                    </div>
+                    <div class="testi-card reveal">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p>"Como profesional recomiendo constantemente el Kit Renacer. Tener herramientas de buena calidad en casa acelera muchísimo la neuro-rehabilitación de mis pacientes post-ACV."</p>
+                        <div class="testi-author">
+                            <div class="testi-avatar" style="background:var(--brand-secondary);">E</div>
+                            <div class="testi-info"><strong>Lic. Esteban R.</strong><span>Profesional de la Salud</span></div>
+                        </div>
+                    </div>
+                    <div class="testi-card reveal">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p>"El pastillero inteligente del Kit Cuidado Experto me salvó. Antes vivía estresado recordando horarios, ahora la máquina avisa sola. Un alivio mental gigante."</p>
+                        <div class="testi-author">
+                            <div class="testi-avatar" style="background:var(--brand-accent);">C</div>
+                            <div class="testi-info"><strong>Carlos M.</strong><span>Familiar a cargo</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 50px;" class="reveal">
+                    <button class="button outline" id="open-testimonial"><i class="fa-solid fa-pen-to-square"></i> Compartir mi experiencia</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="science-section reveal">
+            <h2>No vendemos productos, creamos hábitos.</h2>
+            <p class="lead-text">Basados en la ciencia del comportamiento (Modelo de Fogg), sabemos que para mejorar tu vida necesitás el producto correcto y el incentivo diario. Por eso, cada compra incluye:</p>
+            
+            <div class="science-grid">
+                <div class="science-card">
+                    <i class="fa-solid fa-magnet"></i>
+                    <h3>El Disparador Físico</h3>
+                    <p>Recibirás una pizarra imantada premium para tu heladera, diseñada para que marques tus victorias diarias sin esfuerzo.</p>
+                </div>
+                <div class="science-card">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <h3>El Acompañamiento</h3>
+                    <p>Nuestro equipo te enviará 2 mensajes semanales motivacionales. Sin tecnología compleja, solo contención y apoyo.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <h2>CareLife Argentina</h2>
+        <p>Pagos 100% seguros a través de MercadoPago | Envíos por Andreani.</p>
+        <a href="https://wa.me/5491112345678" target="_blank" class="footer-contact">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Consultas por WhatsApp: +54 9 11 1234-5678
+        </a>
+    </footer>
+
+    <div id="toast-container"></div>
+    <div class="overlay" id="overlay"></div>
+    
+    <aside class="drawer" id="cart-drawer">
+        <div class="drawer-head">
+            <h2>Tu Selección</h2>
+            <button class="icon-button" id="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-lines" id="cart-lines"></div>
+        <div class="cart-foot">
+            <div class="total"><span>Total</span><span id="cart-total">AR$ 0</span></div>
+            <button class="button primary" style="width:100%; padding: 18px;" onclick="alert('Checkout conectado con pasarela de pago segura.')">Finalizar Compra Segura</button>
+        </div>
+    </aside>
+
+    <dialog id="confirm-dialog">
+        <h3>¿Añadir al carrito?</h3>
+        <p>¿Estás seguro de que deseás sumar este kit a tu selección de compra?</p>
+        <div class="confirm-actions">
+            <button class="btn-cancel" id="btn-cancel-add">Cancelar</button>
+            <button class="btn-confirm" id="btn-confirm-add">Sí, añadir</button>
+        </div>
+    </dialog>
+
+    <dialog id="product-dialog"></dialog>
+
+    <dialog id="testimonial-dialog">
+        <div style="padding:40px; position:relative;">
+            <button class="icon-button" id="close-testimonial" style="position:absolute; top:20px; right:20px;"><i class="fa-solid fa-xmark"></i></button>
+            <h2 style="color:var(--brand-primary); margin-bottom:10px; font-weight:800; font-size: 1.8rem;">Compartir Experiencia</h2>
+            <p style="color:var(--text-muted); margin-bottom:25px; font-size: 0.95rem;">Su opinión nos ayuda a seguir mejorando nuestros servicios para todas las familias.</p>
+            
+            <form id="testimonial-form">
+                <label style="font-weight:600; font-size:0.9rem;">Nombre y Apellido</label>
+                <input required id="testi-name" placeholder="Ej: Laura M." style="width:100%; padding:12px; border:1px solid var(--line); border-radius:8px; margin:8px 0 15px;">
+                
+                <label style="font-weight:600; font-size:0.9rem;">Vínculo con CareLife</label>
+                <select required id="testi-role" style="width:100%; padding:12px; border:1px solid var(--line); border-radius:8px; margin:8px 0 15px;">
+                    <option value="Familiar a cargo">Familiar a cargo</option>
+                    <option value="Paciente / Usuario">Paciente / Usuario</option>
+                    <option value="Profesional de la Salud">Profesional de la Salud</option>
+                </select>
+
+                <label style="font-weight:600; font-size:0.9rem;">Tu reseña</label>
+                <textarea required id="testi-text" rows="3" placeholder="Contanos cómo te ayudaron nuestros kits..." style="width:100%; padding:12px; border:1px solid var(--line); border-radius:8px; margin:8px 0 20px;"></textarea>
+                
+                <button class="button primary" style="width:100%;" type="submit"><i class="fa-solid fa-paper-plane"></i> Publicar Testimonio</button>
+            </form>
+        </div>
+    </dialog>
+
+    <script>
+        const products = [
+            {id:'renacer', name:'Kit Renacer', subtitle:'Neuro-Rehabilitación', category:'recuperacion', price:38500, image:'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=85', description:'Herramientas clínicas para motricidad fina y cognición.', includes:['Set de encastre geométrico','Masilla terapéutica','Cuaderno de neuro-entrenamiento'], note:'Acompaña indicaciones terapéuticas.'},
+            {id:'conectados', name:'Kit Autonomía', subtitle:'Vida Activa', category:'conexion', price:145000, image:'https://images.unsplash.com/photo-1581579186983-68ab55d80475?auto=format&fit=crop&w=900&q=85', description:'Tecnología pre-configurada para contacto directo sin barreras digitales.', includes:['Reloj Smart SOS','Tablet preconfigurada','Soporte de mesa de aluminio'], note:'Requiere conexión WiFi o datos.'},
+            {id:'equilibrio', name:'Kit Equilibrio', subtitle:'Control Metabólico', category:'rutina', price:92000, image:'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=900&q=85', description:'Instrumental de fácil uso para monitoreo diario seguro.', includes:['Monitor de glucosa parlante','Tiras reactivas rápidas','Guía nutricional técnica'], note:'Facilita la independencia del paciente.'},
+            {id:'hogar', name:'Kit Hogar Fluido', subtitle:'Arquitectura Segura', category:'movilidad', price:68000, image:'https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=900&q=85', description:'Estructuras de apoyo que reducen drásticamente el riesgo de caída.', includes:['Asideros de alta succión','Mesa ergonómica articulada','Disco rotador de transferencia'], install:true, note:'Instalación limpia, sin obra.'},
+            {id:'paso', name:'Kit Paso Firme', subtitle:'Prevención Pasiva', category:'seguridad', price:45500, image:'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=900&q=85', description:'Sistemas lumínicos y de tracción para rutas nocturnas seguras.', includes:['Sensores LED de paso','Alfombra hidrofóbica','Bandas antideslizantes'], note:'Indicado por gerontólogos.'},
+            {id:'aliado', name:'Kit Cuidado Experto', subtitle:'Soporte al Cuidador', category:'cuidador', price:54000, image:'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=900&q=85', description:'Centralización de la gestión clínica para reducir el burnout.', includes:['Pastillero electrónico sonoro','Pizarra magnética de gestión','Bitácora clínica del cuidador'], note:'Reduce el agotamiento mental.'}
+        ];
+
+        const needs = [
+            ['seguridad', 'Prevención de Caídas', 'Baño y espacios nocturnos', 'fa-shield'],
+            ['movilidad', 'Movilidad Segura', 'Transferencias y traslados', 'fa-person-cane'],
+            ['rutina', 'Monitoreo de Salud', 'Parámetros y medicación', 'fa-notes-medical'],
+            ['conexion', 'Gestión Social', 'Videollamadas y emergencias', 'fa-tower-cell'],
+            ['recuperacion', 'Rehabilitación', 'Motricidad y ejercicios', 'fa-hand-holding-medical'],
+            ['cuidador', 'Soporte Familiar', 'Alivio de carga mental', 'fa-user-nurse']
+        ];
+
+        const currency = n => new Intl.NumberFormat('es-AR', {style: 'currency', currency: 'ARS', maximumFractionDigits: 0}).format(n);
+        let selected = 'all'; const cart = [];
+        let pendingProductId = null; 
+
+        document.querySelector('#need-grid').innerHTML = needs.map(([id, title, caption, icon]) => `
+            <div class="need" data-need="${id}">
+                <div class="need-icon"><i class="fa-solid ${icon}"></i></div>
+                <strong>${title}</strong>
+                <span style="font-size:0.8rem; color:var(--text-muted); display:block; margin-top:5px;">${caption}</span>
+            </div>
+        `).join('');
+
+        document.querySelector('#filters').innerHTML = [['all', 'Catálogo Completo'], ...needs.map(([id, title]) => [id, title])].map(([id, label]) => `
+            <button class="filter ${id === 'all' ? 'active' : ''}" data-filter="${id}">${label}</button>
+        `).join('');
+
+        function renderCatalog() {
+            const list = selected === 'all' ? products : products.filter(p => p.category === selected);
+            document.querySelector('#catalog').innerHTML = list.map(p => `
+                <article class="product reveal visible">
+                    <div class="product-img">
+                        <span class="tag">${p.subtitle}</span>
+                        <img src="${p.image}" alt="${p.name}">
+                    </div>
+                    <div class="product-body">
+                        <h3>${p.name}</h3>
+                        <p>${p.description}</p>
+                        <div class="price-zone">
+                            <div class="price">${currency(p.price)}</div>
+                            <div class="install"><i class="fa-solid ${p.install ? 'fa-wrench' : 'fa-box'}"></i> ${p.install ? 'Instalación incluida' : 'Listo para el hogar'}</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="detail-button" data-detail="${p.id}">Ficha Técnica</button>
+                            <button class="add-button" data-add="${p.id}">Añadir</button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+            document.querySelector('#result-count').textContent = `${list.length} Resultados`;
+        }
+
+        function selectCategory(category) {
+            selected = category;
+            document.querySelectorAll('.filter').forEach(b => b.classList.toggle('active', b.dataset.filter === category));
+            document.querySelectorAll('.need').forEach(b => b.classList.toggle('active', b.dataset.need === category));
+            renderCatalog();
+            document.querySelector('#kits').scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+
+        const overlay = document.querySelector('#overlay'), drawer = document.querySelector('#cart-drawer');
+        const openCart = () => { drawer.classList.add('open'); overlay.classList.add('open'); };
+        const closeCart = () => { drawer.classList.remove('open'); overlay.classList.remove('open'); };
+        document.querySelector('#open-cart').onclick = openCart; document.querySelector('#close-cart').onclick = closeCart; overlay.onclick = closeCart;
+
+        function renderCart() {
+            const total = cart.reduce((a, x) => a + x.qty * x.price, 0);
+            const count = cart.reduce((a, x) => a + x.qty, 0);
+            const countBadge = document.querySelector('#cart-count');
+            countBadge.textContent = count;
+            
+            document.querySelector('#cart-total').textContent = currency(total);
+            document.querySelector('#cart-lines').innerHTML = cart.length ? cart.map(x => `
+                <div class="line-item">
+                    <div><b style="color:var(--brand-primary); font-size:0.95rem;">${x.name}</b><br><span style="color:var(--text-muted); font-size:0.85rem;">${currency(x.price)} × ${x.qty}</span></div>
+                    <button class="remove" data-remove="${x.id}"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            `).join('') : '<div class="empty">Selección vacía.<br>Agregue un kit para comenzar.</div>';
+        }
+
+        const confirmDialog = document.querySelector('#confirm-dialog');
+        function promptAdd(id) { pendingProductId = id; confirmDialog.showModal(); }
+
+        document.querySelector('#btn-cancel-add').onclick = () => { pendingProductId = null; confirmDialog.close(); };
+        document.querySelector('#btn-confirm-add').onclick = () => {
+            if(pendingProductId) { executeAddToCart(pendingProductId); pendingProductId = null; }
+            confirmDialog.close();
+            if(document.querySelector('#product-dialog').open) document.querySelector('#product-dialog').close();
+        };
+
+        function executeAddToCart(id) {
+            const product = products.find(p => p.id === id), line = cart.find(x => x.id === id);
+            line ? line.qty++ : cart.push({...product, qty: 1});
+            renderCart();
+            showToast("Operación Exitosa", `Sumaste <b>${product.name}</b> al carrito.`, "fa-circle-check");
+        }
+
+        // FUNCIÓN TOAST MEJORADA PARA RECIBIR TÍTULO Y MENSAJE
+        function showToast(title, desc, icon="fa-circle-check") {
+            const c = document.querySelector('#toast-container');
+            const t = document.createElement('div'); t.className = 'toast show';
+            t.innerHTML = `<i class="fa-solid ${icon}" style="color:var(--brand-mint); font-size:1.2rem;"></i>
+                           <div><b style="display:block; color:var(--brand-primary); font-size: 0.9rem;">${title}</b><span style="font-size:0.8rem; color:var(--text-muted);">${desc}</span></div>`;
+            c.appendChild(t);
+            setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 500); }, 3500);
+        }
+
+        document.addEventListener('click', e => {
+            const f = e.target.closest('[data-filter]'); if(f) selectCategory(f.dataset.filter);
+            const n = e.target.closest('[data-need]'); if(n) selectCategory(n.dataset.need);
+            const addBtn = e.target.closest('[data-add]'); if(addBtn) promptAdd(addBtn.dataset.add); 
+            const rmBtn = e.target.closest('[data-remove]'); if(rmBtn) {
+                const idx = cart.findIndex(x => x.id === rmBtn.dataset.remove);
+                if(--cart[idx].qty === 0) cart.splice(idx, 1); renderCart();
+            }
+            const detBtn = e.target.closest('[data-detail]'); if(detBtn) {
+                const p = products.find(x => x.id === detBtn.dataset.detail);
+                document.querySelector('#product-dialog').innerHTML = `
+                    <div style="display: grid; grid-template-columns: 1fr 1fr;">
+                        <img src="${p.image}" style="width:100%; height:100%; object-fit:cover;" alt="${p.name}">
+                        <div style="padding: 40px; position:relative;">
+                            <button class="icon-button" onclick="document.querySelector('#product-dialog').close()" style="position:absolute; top:20px; right:20px;"><i class="fa-solid fa-xmark"></i></button>
+                            <div style="font-size:0.8rem; font-weight:700; color:var(--brand-secondary); text-transform:uppercase; margin-bottom:10px;">${p.subtitle}</div>
+                            <h2 style="font-size:2rem; font-weight:800; color:var(--brand-primary); margin-bottom:15px; letter-spacing:-0.03em;">${p.name}</h2>
+                            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:20px;">${p.description}</p>
+                            <ul style="margin-left: 20px; color:var(--text-muted); font-size:0.9rem; margin-bottom: 25px;">${p.includes.map(i => `<li style="margin-bottom:8px;">${i}</li>`).join('')}</ul>
+                            <div style="background:#f8fafc; border-left:4px solid var(--line); padding:15px; font-size:0.85rem; color:var(--text-muted); margin-bottom:25px;">${p.note}</div>
+                            <div style="font-size:1.8rem; font-weight:800; color:var(--brand-primary); margin-bottom:20px;">${currency(p.price)}</div>
+                            <button class="button primary" style="width:100%;" data-add="${p.id}">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                `;
+                document.querySelector('#product-dialog').showModal();
+            }
+        });
+
+        // NUEVO: SISTEMA DE TESTIMONIOS INTERACTIVO
+        const testimonialModal = document.querySelector('#testimonial-dialog');
+        document.querySelector('#open-testimonial').onclick = () => testimonialModal.showModal();
+        document.querySelector('#close-testimonial').onclick = () => testimonialModal.close();
+
+        document.querySelector('#testimonial-form').onsubmit = e => {
+            e.preventDefault();
+            
+            // 1. Obtenemos los valores del formulario
+            const name = document.querySelector('#testi-name').value;
+            const role = document.querySelector('#testi-role').value;
+            const text = document.querySelector('#testi-text').value;
+            const initial = name.charAt(0).toUpperCase();
+
+            // 2. Creamos la nueva tarjeta HTML
+            const newCard = document.createElement('div');
+            newCard.className = 'testi-card reveal visible'; 
+            newCard.innerHTML = `
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"${text}"</p>
+                <div class="testi-author">
+                    <div class="testi-avatar" style="background:#10b981;">${initial}</div>
+                    <div class="testi-info">
+                        <strong>${name}</strong>
+                        <span>${role}</span>
+                    </div>
+                </div>
+            `;
+            
+            // 3. La agregamos al inicio de la lista de testimonios
+            document.querySelector('#testi-grid').prepend(newCard);
+            
+            // 4. Cerramos, limpiamos y mostramos notificación
+            testimonialModal.close();
+            e.target.reset();
+            showToast("¡Gracias por compartir!", "Tu testimonio ha sido publicado con éxito.", "fa-heart-pulse");
+        };
+
+        const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+            if(entry.isIntersecting) { 
+                entry.target.classList.add('visible'); 
+            } else {
+                entry.target.classList.remove('visible'); 
+            }
+        }), {threshold: 0.1});
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
